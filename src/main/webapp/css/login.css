@@ -1,0 +1,117 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	/* background: -webkit-linear-gradient(red, blue); Safari 5.1 - 6.0
+	background: -o-linear-gradient(red, blue); Opera 11.1 - 12.0
+	background: -moz-linear-gradient(red, blue); Firefox 3.6 - 15
+	background: linear-gradient(red, blue); 标准的语法 */
+	/* background-image: linear-gradient(to bottom, rgb(13,142,233), rgb(255, 255, 255));*/
+	/* background: url(../img/timg.jpg) ;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;  */
+	
+}
+
+.login {
+	/*方案一*/
+	/*border-radius: 10px;
+	border: solid 1px #F0FFFF;
+	margin-left: 33%;
+	margin-top: 180px;
+	width: 530px;
+	height: 320px;*/
+	/*方案二*/
+	border-radius: 10px;
+	/* border: solid 1px #F0FFFF; */
+	border:solid 1px black;
+	margin-left: 31.9%;
+	margin-top: 160px;
+	width: 480px;
+	height: 294px;
+}
+
+.iconfont:before {
+	color: white;
+	font-family: "iconfont";
+	font-size: 22px;
+	font-style: normal;
+}
+
+a {
+	text-decoration: none;
+}
+
+#span01 {
+	float: left;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+#span02 {
+	float: right;
+	margin-right: 20px;
+	margin-top: 20px;
+}
+
+.login form {
+	/*border: 1px red solid;*/
+	width: 300px;
+	height: 150px;
+	margin-top: 80px;
+	/*margin-left: 120px;*/
+	/*方案二*/
+	margin-left: 99px;
+}
+
+.login form input {
+	width: 240px;
+	height: 35px;
+	margin: 8px;
+	margin-top: 0px;
+	background-color: transparent;
+}
+
+/* #sub {
+	cursor: pointer;
+	margin-left: 37px;
+	color: rgb(54, 37, 69);
+} */
+input {
+	border-radius: 10px;
+}
+
+#sub {
+	cursor: pointer;
+	background-image: linear-gradient(to top, rgb(39, 106, 157),
+		rgb(49, 138, 206));
+	color: white;
+	border: none;
+	border-radius: 10px;
+	margin-left: 37px;
+}
+
+p {
+	color: red;
+}
+
+#keepPwd {
+	width: 15px;
+	height: 15px;
+	background-color: transparent;
+	float: left;
+	margin-left: 22px;
+	margin-top: 22px;
+}
+
+#span03 {
+	font-size: 14px;
+	float: left;
+	margin-left: 3px;
+	margin-top: 20px;
+	color: black;
+}
