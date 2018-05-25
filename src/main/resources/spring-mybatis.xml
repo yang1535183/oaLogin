@@ -10,7 +10,7 @@
                         http://www.springframework.org/schema/mvc    
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
                         
-	<import resource="classpath:spring-shiro.xml"></import>
+	<!-- <import resource="classpath:spring-shiro.xml"></import> -->
 	
 	<!-- 自动扫描 -->
 	<context:component-scan base-package="com.yunxi" />
@@ -56,5 +56,35 @@
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- 注册自定义realm -->
+	<bean id="MyRealm" class="com.yunxi.shiro.MyRealm"></bean>
+	
+	<!-- 注册安全管理器 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<!-- 注入realm -->
+		<property name="realm" ref="MyRealm"></property>
+	</bean>
+	
+	<!-- 配置ShiroFilter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- 注入安全管理器 -->
+		<property name="securityManager" ref="securityManager"></property>
+		<!-- 注入系统登录页面 -->
+		<property name="loginUrl" value="login"></property>
+		<!-- 注入成功页面 -->
+		<property name="successUrl" value="index"></property>
+		<!-- 注入权限不足提示页面 -->
+		<property name="unauthorizedUrl" value="unauthorizedUrl"></property>
+		<!-- URL拦截规则 -->
+		<property name="filterChainDefinitions">
+			<value>
+				/css/**=anon
+				/js/**=anon
+				/images/**=anon
+				<!-- /**=anthc -->
+			</value>
+		</property>
 	</bean>
 </beans>

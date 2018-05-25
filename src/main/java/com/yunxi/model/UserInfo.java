@@ -30,4 +30,10 @@ public class UserInfo {
     public void setPasswd(String passwd) {
         this.passwd = passwd == null ? null : passwd.trim();
     }
+
+	@Override
+	public String toString() {
+		return "UserInfo [uid=" + uid + ", username=" + username + ", passwd=" + passwd + "]";
+	}
+    
 }

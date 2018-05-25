@@ -19,39 +19,46 @@ import org.apache.shiro.subject.PrincipalCollection;
 */
 public class CustomRealm extends AuthorizingRealm{
 
-	 /**
-     * 授权
-     * @param principalCollection
-     * @return
-     */
+	//设置Realm名称
     @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        String userName = (String) principalCollection.getPrimaryPrincipal();
-        List<String> permissionList=new ArrayList<String>();
-        permissionList.add("user:add");
-        permissionList.add("user:delete");
-        if (userName.equals("zhou")) {
-            permissionList.add("user:query");
-        }
-        SimpleAuthorizationInfo info=new SimpleAuthorizationInfo();
-        info.addStringPermissions(permissionList);
-        info.addRole("admin");
+    public void setName(String name){
+        super.setName("customRealm");
+    }
+ 
+    //用于认证
+    @Override
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException{
+         
+        //1.从token取出用户身份信息
+        String userCode = (String)token.getPrincipal();
+         
+        //2.根据用户userCode查询数据库
+        //模拟从数据库查询到的密码
+        String password = "123";
+         
+        //3.查询到返回认证信息
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(userCode,password,this.getName());
+         
         return info;
     }
-    /**
-     * 认证
-     * @param authenticationToken
-     * @return
-     * @throws AuthenticationException
-     */
+ 
+    //用于授权
     @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        String userName = (String) authenticationToken.getPrincipal();
-        if ("".equals(userName)) {
-            return  null;
-        }
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(userName,"123456",this.getName());
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals){
+         
+        //获取主身份信息
+         String userCode = (String)principals.getPrimaryPrincipal();
+          
+         //根据身份信息获取权限信息
+         //模拟从数据库获取到数据
+         List<String> permissions = new ArrayList<String>();
+         permissions.add("user:create"); //用户的创建权限
+         permissions.add("items:add"); //商品的添加权限
+          
+         //将查询到授权信息填充到对象中
+         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+         info.addStringPermissions(permissions);
+          
         return info;
     }
-
 }

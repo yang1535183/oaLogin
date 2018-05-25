@@ -1,7 +1,10 @@
 package com.yunxi.dao;
 
+import org.springframework.stereotype.Repository;
+
 import com.yunxi.model.UserInfo;
 
+@Repository("UserDao")
 public interface UserInfoMapper {
     int deleteByPrimaryKey(Integer uid);
 
@@ -14,4 +17,6 @@ public interface UserInfoMapper {
     int updateByPrimaryKeySelective(UserInfo record);
 
     int updateByPrimaryKey(UserInfo record);
+    
+    UserInfo getUserByUserName(String userName);
 }

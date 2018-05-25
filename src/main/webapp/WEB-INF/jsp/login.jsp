@@ -15,7 +15,7 @@
 	<div class="login">
 		<span id="span01">铜陵有色OA</span><span id="span02"><a
 			href="register.do">用户注册</a></span>
-		<form id="loginForm" action="login.do" method="post">
+		<form id="loginForm" action="shiroLogin.do" method="post">
 			<div class="">
 				<i class="iconfont icon-denglu"></i> <input type="text"
 					id="userName" name="userName" placeholder="请输入账号"

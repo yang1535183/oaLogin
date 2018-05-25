@@ -17,9 +17,9 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"></property>
         <!--登入页面-->
-        <property name="loginUrl" value="/login.jsp"></property>
+        <property name="loginUrl" value="login"></property>
         <!--登入成功页面-->
-        <property name="successUrl" value="/index.jsp"/>
+        <property name="successUrl" value="index"/>
         <property name="filters">
             <map>
                 <!--退出过滤器-->
